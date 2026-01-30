@@ -14,9 +14,8 @@ import ScrollToTop from "./components/ScrollToTop";
 import Information from "./pages/Information";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
+    <>
     <BrowserRouter>
       <div className="App">
         <Navbar />
@@ -34,6 +33,7 @@ function App() {
         <ScrollToTop />
       </div>
     </BrowserRouter>
+    </>
   );
 }
 

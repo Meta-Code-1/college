@@ -256,3 +256,18 @@
         display: none;
     }
 }
+
+/* Active Link Styling */
+.navlinks a.active,
+.navlinks1 a.active,
+.mobile-dropdown-content a.active,
+.desktop-dropdown-content a.active {
+    color: #007bff;
+    font-weight: 700;
+    border-bottom: 2px solid #007bff;
+}
+
+.desktop-dropdown-content a.active {
+    background-color: #e9ecef;
+    border-bottom: none;
+}

@@ -17,7 +17,17 @@ import Profile from "../components/Profile";
 import MessageCards from "../components/MessageCards";
 import aboutbaner1 from "../assets/aboutbaner1.jpg";
 import collegeImg from "../assets/college/kdmedical-college1.jpg";
-import { Cog6ToothIcon, ShieldCheckIcon } from "@heroicons/react/24/outline";
+import {
+  Cog6ToothIcon,
+  ShieldCheckIcon,
+  AcademicCapIcon,
+  BuildingOffice2Icon,
+  PhotoIcon,
+  CurrencyRupeeIcon,
+  DocumentTextIcon,
+  PencilSquareIcon,
+  FingerPrintIcon,
+} from "@heroicons/react/24/outline";
 
 const Home = () => {
   React.useEffect(() => {
@@ -89,12 +99,10 @@ const Home = () => {
                 alt="COVID-19 testing laboratory"
                 className="w-full h-full object-cover transform transition-transform duration-700 hover:scale-105"
               />
-              
             </div>
 
             {/* Content Section */}
             <div className="md:w-1/2 p-8 md:p-12 lg:p-16 flex flex-col justify-center bg-gradient-to-br from-white to-orange-50/30">
-
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
                 COVID-19 Testing at
                 <span className="block text-orange-600">
@@ -105,8 +113,8 @@ const Home = () => {
               <div className="space-y-4 text-gray-600 text-lg leading-relaxed">
                 <p>
                   Our Molecular Biology laboratory at K.D. Medical College is
-                  fully approved for sample collection, testing, and diagnosis of
-                  suspected COVID-19 cases.
+                  fully approved for sample collection, testing, and diagnosis
+                  of suspected COVID-19 cases.
                 </p>
                 <div className="bg-orange-50 border-l-4 border-orange-400 p-4 rounded-r-lg mt-6">
                   <p className="font-medium text-orange-900 text-base">
@@ -115,7 +123,6 @@ const Home = () => {
                     accuracy.
                   </p>
                 </div>
-                
               </div>
             </div>
           </div>
@@ -150,39 +157,61 @@ const Home = () => {
               <h3 className="text-3xl font-bold text-gray-800 mb-4">
                 Highlights
               </h3>
-              <p className="text-gray-500">Quick access to important resources</p>
+              <p className="text-gray-500">
+                Quick access to important resources
+              </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
-                { text: "Affiliation", link: "/contact#affiliation", icon: "" },
+                {
+                  text: "Affiliation",
+                  link: "/contact#affiliation",
+                  icon: <AcademicCapIcon className="w-8 h-8 text-orange-600" />,
+                },
                 {
                   text: "Hospital Gallery",
                   link: "/infrastructure#hospital-gallery",
-                  icon: "",
+                  icon: (
+                    <BuildingOffice2Icon className="w-8 h-8 text-orange-600" />
+                  ),
                 },
                 {
                   text: "Medical College Gallery",
                   link: "/infrastructure#college-gallery",
-                  icon: "",
+                  icon: <PhotoIcon className="w-8 h-8 text-orange-600" />,
                 },
                 {
                   text: "Fee Structure",
                   link: "/highlights#fee-structure",
-                  icon: "",
+                  icon: (
+                    <CurrencyRupeeIcon className="w-8 h-8 text-orange-600" />
+                  ),
                 },
                 {
                   text: "Anti Ragging Affidavit",
                   link: antiRagging,
-                  icon: "",
+                  icon: (
+                    <DocumentTextIcon className="w-8 h-8 text-orange-600" />
+                  ),
                 },
                 {
                   text: "Affidavit - Student Undertaking",
                   link: "/course",
-                  icon: "",
+                  icon: (
+                    <PencilSquareIcon className="w-8 h-8 text-orange-600" />
+                  ),
                 },
-                { text: "ANTI RAGGING - Anti Ragging Policies", link: "#", icon: "" },
-                { text: "Bio Metrics Attendance", link: "#", icon: "" },
+                {
+                  text: "ANTI RAGGING - Anti Ragging Policies",
+                  link: "/highlights#anti-ragging",
+                  icon: <ShieldCheckIcon className="w-8 h-8 text-orange-600" />,
+                },
+                {
+                  text: "Bio Metrics Attendance",
+                  link: "https://kmchrcmat.nmcindia.ac.in/",
+                  icon: <FingerPrintIcon className="w-8 h-8 text-orange-600" />,
+                },
               ].map((item, index) => (
                 <div
                   key={index}
@@ -191,12 +220,13 @@ const Home = () => {
                   data-aos-delay={index * 50}
                 >
                   <div className="flex flex-col items-center text-center space-y-4">
-                    <div className="w-16 h-16 bg-orange-50 rounded-full flex items-center justify-center text-3xl group-hover:bg-orange-100 transition-colors">
+                    <div className="w-16 h-16 bg-orange-50 rounded-full flex items-center justify-center text-3xl group-hover:bg-orange-100 transition-colors cursor-pointer">
                       {item.icon}
                     </div>
 
                     {item.link !== "#" ? (
-                      item.link.toString().endsWith(".pdf") ? (
+                      item.link.toString().endsWith(".pdf") ||
+                      item.link.toString().startsWith("http") ? (
                         <a
                           href={item.link}
                           target="_blank"
@@ -214,7 +244,7 @@ const Home = () => {
                         </Link>
                       )
                     ) : (
-                      <span className="text-gray-800 font-semibold text-lg">
+                      <span className="text-gray-800 font-semibold text-lg cursor-pointer">
                         {item.text}
                       </span>
                     )}

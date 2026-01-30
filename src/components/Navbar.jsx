@@ -1,43 +1,52 @@
-import React, { useState } from 'react'
-import '../style/navbar.css'
-import logo from '../assets/kdmchrc.png'
-import { Bars3Icon, XMarkIcon, ChevronDownIcon } from '@heroicons/react/24/outline'
-import { Link } from 'react-router-dom'
+import React, { useState } from "react";
+import "../style/navbar.css";
+import logo from "../assets/kdmchrc.png";
+import {
+  Bars3Icon,
+  XMarkIcon,
+  ChevronDownIcon,
+} from "@heroicons/react/24/outline";
+import { Link, useLocation } from "react-router-dom";
 
 const navItems = [
   {
-    name: 'About Us',to: '/about'
+    name: "About Us",
+    to: "/about",
   },
-  { name: 'Course', to: '/Course' },
+  { name: "Course", to: "/Course" },
   {
-    name: 'Infrastructure',to: '/Infrastructure'
+    name: "Infrastructure",
+    to: "/Infrastructure",
   },
   {
-    name: 'Information as per NMC',
-    to: '/Information'
+    name: "Information as per NMC",
+    to: "/Information",
   },
-  { name: 'Contact Us', to: '/Contact' },
-]
+  { name: "Contact Us", to: "/Contact" },
+];
 
 const navItems1 = [
-  { name: 'Home', to: '/' },
+  { name: "Home", to: "/" },
   {
-    name: 'About Us',to: '/about',
+    name: "About Us",
+    to: "/about",
   },
-  { name: 'Course', to: '/Course' },
+  { name: "Course", to: "/Course" },
   {
-    name: 'Infrastructure',to: '/Infrastructure'
+    name: "Infrastructure",
+    to: "/Infrastructure",
   },
   {
-    name: 'Information as per NMC',
-    to: '/Information'
+    name: "Information as per NMC",
+    to: "/Information",
   },
-  { name: 'Contact Us', to: '/Contact' },
-]
+  { name: "Contact Us", to: "/Contact" },
+];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const location = useLocation();
 
   const toggleDropdown = (name) => {
     setActiveDropdown(activeDropdown === name ? null : name);
@@ -55,33 +64,57 @@ export default function Navbar() {
         </div>
 
         {/* Mobile View Header */}
-        <div className='navbar1'>
+        <div className="navbar1">
           <Link to="/">Home</Link>
           <button className="menu-toggle" onClick={() => setIsOpen(!isOpen)}>
-            {isOpen ? <XMarkIcon className="icon" /> : <Bars3Icon className="icon" />}
+            {isOpen ? (
+              <XMarkIcon className="icon" />
+            ) : (
+              <Bars3Icon className="icon" />
+            )}
           </button>
         </div>
 
         {/* Mobile Nav Links */}
-        <div className={`navlinks ${isOpen ? 'open' : ''}`}>
+        <div className={`navlinks ${isOpen ? "open" : ""}`}>
           {navItems.map((item) => (
             <div key={item.name} className="nav-item-mobile">
               {item.dropdown ? (
                 <>
-                  <button className="dropdown-toggle-mobile" onClick={() => toggleDropdown(item.name)}>
+                  <button
+                    className="dropdown-toggle-mobile"
+                    onClick={() => toggleDropdown(item.name)}
+                  >
                     {item.name}
-                    <ChevronDownIcon className={`chevron-icon ${activeDropdown === item.name ? 'rotate' : ''}`} />
+                    <ChevronDownIcon
+                      className={`chevron-icon ${activeDropdown === item.name ? "rotate" : ""}`}
+                    />
                   </button>
-                  <div className={`mobile-dropdown-content ${activeDropdown === item.name ? 'show' : ''}`}>
+                  <div
+                    className={`mobile-dropdown-content ${activeDropdown === item.name ? "show" : ""}`}
+                  >
                     {item.dropdown.map((subItem) => (
-                      <Link key={subItem.name} to={subItem.to} onClick={() => setIsOpen(false)}>
+                      <Link
+                        key={subItem.name}
+                        to={subItem.to}
+                        className={
+                          location.pathname === subItem.to ? "active" : ""
+                        }
+                        onClick={() => setIsOpen(false)}
+                      >
                         {subItem.name}
                       </Link>
                     ))}
                   </div>
                 </>
               ) : (
-                <Link to={item.to} onClick={() => setIsOpen(false)}>{item.name}</Link>
+                <Link
+                  to={item.to}
+                  className={location.pathname === item.to ? "active" : ""}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.name}
+                </Link>
               )}
             </div>
           ))}
@@ -99,19 +132,30 @@ export default function Navbar() {
                   </Link>
                   <div className="desktop-dropdown-content">
                     {item.dropdown.map((subItem) => (
-                      <Link key={subItem.name} to={subItem.to}>
+                      <Link
+                        key={subItem.name}
+                        to={subItem.to}
+                        className={
+                          location.pathname === subItem.to ? "active" : ""
+                        }
+                      >
                         {subItem.name}
                       </Link>
                     ))}
                   </div>
                 </div>
               ) : (
-                <Link to={item.to}>{item.name}</Link>
+                <Link
+                  to={item.to}
+                  className={location.pathname === item.to ? "active" : ""}
+                >
+                  {item.name}
+                </Link>
               )}
             </div>
           ))}
         </div>
       </nav>
     </div>
-  )
+  );
 }

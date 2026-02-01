@@ -1,148 +1,127 @@
 import React from "react";
 import logo from "../assets/kdmchrc.png";
 import { Link } from "react-router-dom";
+import { MapPinIcon, PhoneIcon, EnvelopeIcon } from "@heroicons/react/24/outline";
+
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-white py-10">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-        <div className="md:m-7 m-4">
-          <img src={logo} alt="KD College" />
-          <p>Top private college in Mathura</p>
+    <footer className="bg-slate-900 text-gray-300 py-12 px-6 md:px-12">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 border-b border-slate-800 pb-12">
+        {/* Logo and Description */}
+        <div className="space-y-4">
+          <div className="bg-white p-2 rounded-lg inline-block">
+            <img src={logo} alt="KD College" className="h-16 w-auto" />
+          </div>
+          <p className="text-sm leading-relaxed max-w-sm">
+            K.D. Medical College Hospital & Research Center is dedicated to excellence in medical education, research, and patient care, fostering the next generation of healthcare leaders.
+          </p>
         </div>
 
-        <div className="md:m-7 m-4 flex flex-col">
-          <h1 className="font-bold">Quick Links</h1>
-          <Link to="/">Home</Link>
-          <Link to="/about">About Us</Link>
-          <Link to="/course">Course</Link>
-          <Link to="/contact">Contact</Link>
-          <Link to="/infrastructure">Infrastructure</Link>
-          <Link to="/terms-of-use-privacy-policy">
-            Terms of Use | Privacy Policy
-          </Link>
+        {/* Quick Links */}
+        <div className="flex flex-col space-y-3">
+          <h2 className="text-white font-bold text-lg mb-2">Quick Links</h2>
+          {[
+            { name: "Home", path: "/" },
+            { name: "About Us", path: "/about" },
+            { name: "Course", path: "/course" },
+            { name: "Contact", path: "/contact" },
+            { name: "Infrastructure", path: "/infrastructure" },
+            { name: "Privacy Policy", path: "/terms-of-use-privacy-policy" },
+          ].map((link) => (
+            <Link
+              key={link.name}
+              to={link.path}
+              className="hover:text-blue-400 transition-colors duration-200 text-sm"
+            >
+              {link.name}
+            </Link>
+          ))}
         </div>
 
-        <div className="md:m-7 m-4 ">
-          <h1 className="font-bold">Contact Us</h1>
-          <p>Address: Mathura</p>
-          <p>Phone: 18002704121</p>
-          <p>Email: ikdmchrc@gmail.com</p>
+        {/* Contact Us */}
+        <div className="space-y-4">
+          <h2 className="text-white font-bold text-lg mb-2">Contact Us</h2>
+          <div className="space-y-3">
+            <div className="flex items-start gap-3">
+              <MapPinIcon className="h-5 w-5 text-blue-400 mt-0.5" />
+              <p className="text-sm">Akbarpur, Mathura, Uttar Pradesh 281406</p>
+            </div>
+            <div className="flex items-center gap-3">
+              <PhoneIcon className="h-5 w-5 text-blue-400" />
+              <p className="text-sm">1800 270 4121</p>
+            </div>
+            <div className="flex items-center gap-3">
+              <EnvelopeIcon className="h-5 w-5 text-blue-400" />
+              <p className="text-sm">ikdmchrc@gmail.com</p>
+            </div>
+          </div>
 
-          <div className="flex gap-2 mt-2">
-            {/* <!-- Facebook --> */}
-            <a
-              href="https://www.facebook.com/kdmchrc/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-blue-500 transition-colors"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="currentColor"
-                viewBox="0 0 24 24"
+          <div className="flex gap-4 pt-4">
+            {/* Social Links */}
+            {[
+              {
+                name: "Facebook",
+                href: "https://www.facebook.com/kdmchrc/",
+                icon: (
+                  <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
+                ),
+                hover: "hover:bg-blue-600",
+              },
+              {
+                name: "Twitter",
+                href: "https://twitter.com/kd_medical",
+                icon: (
+                  <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+                ),
+                hover: "hover:bg-sky-500",
+              },
+              {
+                name: "Instagram",
+                href: "https://www.instagram.com/kdmedical.mtr/",
+                icon: (
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204 013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                ),
+                hover: "hover:bg-pink-600",
+              },
+              {
+                name: "Linkedin",
+                href: "https://www.linkedin.com/company/13603905/",
+                icon: (
+                  <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
+                ),
+                hover: "hover:bg-blue-700",
+              },
+            ].map((social) => (
+              <a
+                key={social.name}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`p-2 bg-slate-800 rounded-full text-white transition-all duration-300 ${social.hover} transform hover:-translate-y-1`}
+                aria-label={social.name}
               >
-                <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
-              </svg>
-            </a>
-            {/* <!-- Twitter --> */}
-            <a
-              href="https://twitter.com/kd_medical"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-blue-400 transition-colors"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
-              </svg>
-            </a>
-
-            {/* <!-- Google --> */}
-            <a
-              href="https://plus.google.com/107965938125970990550"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-red-500 transition-colors"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M7 11v2.4h3.97c-.16 1.029-1.2 3.02-3.97 3.02-2.39 0-4.34-1.979-4.34-4.42 0-2.44 1.95-4.42 4.34-4.42 1.36 0 2.27.58 2.79 1.08l1.9-1.83c-1.22-1.14-2.8-1.83-4.69-1.83-3.87 0-7 3.13-7 7s3.13 7 7 7c4.04 0 6.721-2.84 6.721-6.84 0-.46-.051-.81-.111-1.16h-6.61zm0 0 17 2h-3v3h-2v-3h-3v-2h3v-3h2v3h3v2z"
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </a>
-
-            {/* <!-- Instagram --> */}
-            <a
-              href="https://www.instagram.com/kdmedical.mtr/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-pink-500 transition-colors"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-              </svg>
-            </a>
-
-            {/* <!-- Linkedin --> */}
-            <a
-              href="https://www.linkedin.com/company/13603905/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-blue-700 transition-colors"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
-              </svg>
-            </a>
-
-            {/* <!-- Pinterest --> */}
-            <a
-              href="https://www.pinterest.com/kdmedical/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-red-600 transition-colors"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </a>
+                <svg
+                  className="h-5 w-5"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  {social.icon}
+                </svg>
+              </a>
+            ))}
           </div>
         </div>
       </div>
-      <p className="text-center mt-10">
-        Copyright © 2023 KD College. All rights reserved.
-      </p>
+      
+      <div className="max-w-7xl mx-auto pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p className="text-sm text-gray-500 text-center md:text-left">
+          Copyright © {new Date().getFullYear()} KD College. All rights reserved.
+        </p>
+        <div className="flex gap-6 text-xs text-gray-500">
+          <Link to="/terms-of-use-privacy-policy" className="hover:text-white transition-colors">Terms of Service</Link>
+          <Link to="/terms-of-use-privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
+        </div>
+      </div>
     </footer>
   );
 };

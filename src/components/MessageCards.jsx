@@ -8,7 +8,7 @@ const cards = [
   {
     title: "Chairman",
     description:
-      "Embark on a spiritual journey to discover your inner self. Soul Trek is not just a travel experience but a path to mindfulness, bringing students closer to nature and their own consciousness.",
+      "At KDMCHRC, we believe a healthy community is a fundamental need for the success of any nation. Hence we aim at providing, perpetuating and nurturing the highest quality education and state-of-the-art patient care.",
     image: chairman,
     color: "bg-[#FFFAF0]", // Warm cream
     borderColor: "border-orange-200",
@@ -16,7 +16,7 @@ const cards = [
   {
     title: "Vice Chairman",
     description:
-      "Every year at Rishihood University, our learners and faculty take on the 100 Km walk. Over two days, we walk 50 km forward and 50 km back to test our endurance and find our purpose.",
+      "At Kanti Devi Medical College, Hospital and Research Center believe that the Hands that serve are Holier. We also believe in the service to society through education for enrichment and enlightenment.",
     image: vc,
     color: "bg-white", // Pure white
     borderColor: "border-gray-200",
@@ -24,7 +24,7 @@ const cards = [
   {
     title: "Managing Director",
     description:
-      "Got a business idea? The Venture Studio is your launchpad. We provide mentorship, resources, and connections to turn your innovative concepts into successful startups.",
+      "The KDMCHRC is started not only to serve the people of Brij region but also to impart high quality training to Building Doctor’s. This year we are very proud to announce the commencement of the medical course.",
     image: md,
     color: "bg-[#F0F9FF]", // Light blue
     borderColor: "border-blue-200",
@@ -32,7 +32,7 @@ const cards = [
   {
     title: "Dean",
     description:
-      "Got a business idea? The Venture Studio is your launchpad. We provide mentorship, resources, and connections to turn your innovative concepts into successful startups.",
+      "The educational program at Kanti Devi Medical College, Hospital and Research Center Mathura will definitely help you to realize your great potential to grow into a promising Doctor of 21st century.",
     image: dean,
     color: "bg-[#F0F9FF]", // User duplicated color in previous edit, using Light Purple for distinction or keep as requested. Keeping light blue as user set, but alternating is often better. I will stick to user's edit but maybe vary slightly for visual separation if needed, or just keep it.
     borderColor: "border-blue-200",
